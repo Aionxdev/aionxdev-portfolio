@@ -1,0 +1,138 @@
+/* src/styles/components/bioSection.css */
+.bio-section {
+  /* Uses .container and .section-padding from main.css */
+}
+
+.bio-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr; /* Default to single column for mobile */
+  gap: var(--space-xl);
+  align-items: flex-start; /* Align items to the top */
+}
+
+@media (min-width: 768px) { /* Tablet and up */
+  .bio-content-wrapper {
+    grid-template-columns: 300px 1fr; /* Image column and text column */
+    gap: var(--space-xxl);
+  }
+}
+@media (min-width: 992px) { /* Desktop */
+  .bio-content-wrapper {
+    grid-template-columns: 350px 1fr; /* Slightly wider image column on larger screens */
+  }
+}
+
+
+.bio-image-container {
+  display: flex;
+  justify-content: center; /* Center image on mobile */
+  margin-bottom: var(--space-lg);
+}
+@media (min-width: 768px) {
+  .bio-image-container {
+    justify-content: flex-start; /* Align to start on larger screens */
+    margin-bottom: 0; /* Remove bottom margin when side-by-side */
+  }
+}
+
+
+.bio-profile-picture {
+  width: 250px; /* Adjust as needed */
+  height: 250px;
+  border-radius: 50%; /* Circular image */
+  object-fit: cover;
+  border: 5px solid var(--background-card); /* Use card bg for border to "lift" it */
+  box-shadow: var(--shadow-lg);
+}
+@media (min-width: 768px) {
+  .bio-profile-picture {
+    width: 100%; /* Fill the grid column width */
+    max-width: 300px; /* Max size */
+    height: auto; /* Maintain aspect ratio */
+    aspect-ratio: 1 / 1; /* Ensure it's square before becoming circular */
+  }
+}
+@media (min-width: 992px) {
+  .bio-profile-picture {
+    max-width: 350px;
+  }
+}
+
+
+.bio-text-content {
+  /* Styles for the text area */
+}
+
+.bio-greeting {
+  font-size: 2.2rem; /* Slightly smaller than page H1 */
+  color: var(--text-color-heading);
+  margin-bottom: var(--space-xs);
+  font-weight: 700;
+}
+
+.bio-title {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+  line-height: 1.4;
+}
+.bio-tagline {
+  color: var(--text-color-muted);
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+.bio-main-text,
+.bio-details {
+  font-size: 1.05rem; /* Slightly larger for readability */
+  line-height: 1.7;
+  color: var(--current-theme-text); /* Adapts to theme */
+  margin-bottom: var(--space-lg);
+}
+.bio-main-text strong,
+.bio-details strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+.bio-main-text em,
+.bio-details em {
+  font-style: italic;
+  color: var(--secondary-color); /* Or another accent */
+}
+
+.bio-details ul {
+  list-style: none;
+  padding-left: 0; /* Remove default padding */
+  margin-top: var(--space-sm);
+}
+.bio-details ul li {
+  padding-left: 1.5em; /* Space for the bullet/icon */
+  position: relative;
+  margin-bottom: var(--space-sm);
+}
+.bio-details ul li::before {
+  content: ''; /* Default: no bullet, let the text provide it (like 🔹) */
+  /* Or use a custom bullet:
+  content: '✓';
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  */
+}
+
+.bio-subheader {
+  font-size: 1.8rem;
+  color: var(--text-color-heading);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: var(--space-xs);
+  display: inline-block; /* So border only spans text width */
+}
+
+/* Dark mode specific adjustments if needed, mostly handled by variables */
+.dark-mode .bio-profile-picture {
+  border-color: var(--background-card); /* Already uses variable */
+}

@@ -1,0 +1,18 @@
+/* src/styles/components/typewriter.css or add to main.css */
+.typewriter-text {
+  /* Basic styling for the text itself if needed */
+  display: inline-block; /* Or block depending on usage */
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  opacity: 1;
+  animation: blink 0.7s infinite;
+  color: var(--primary-color); /* Or inherit */
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

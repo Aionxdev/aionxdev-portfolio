@@ -1,0 +1,69 @@
+/* src/styles/components/serviceItem.css */
+.service-item {
+  display: flex;
+  flex-direction: column;
+  text-align: center; /* Or left if preferred */
+  padding: var(--space-lg);
+  height: 100%; /* For consistent height in a grid */
+  background-color: var(--background-card);
+  border: 1px solid var(--current-theme-border);
+  /* Shadow and hoverEffect are handled by Card component props */
+}
+
+.service-item-icon-container {
+  font-size: 3rem; /* Adjust icon size */
+  color: var(--primary-color);
+  margin-bottom: var(--space-md);
+  line-height: 1; /* Prevent extra space from icon line height */
+}
+
+.service-item-content {
+  flex-grow: 1; /* Allows content to fill space, pushing action to bottom */
+}
+
+.service-item-title {
+  font-size: 1.4rem;
+  color: var(--text-color-heading);
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+  font-weight: 600;
+}
+
+.service-item-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--current-theme-text);
+  margin-bottom: var(--space-md);
+}
+
+.service-item-action {
+  margin-top: auto; /* Pushes action to the bottom of the card */
+  padding-top: var(--space-md);
+}
+
+.service-item-cta-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  transition: color var(--transition-short);
+}
+.service-item-cta-link:hover {
+  color: var(--primary-color-darker);
+  text-decoration: underline;
+}
+.service-item-cta-link svg {
+  transition: transform 0.2s ease-in-out;
+}
+.service-item-cta-link:hover svg {
+  transform: translateX(3px);
+}
+
+/* Dark mode adjustments (mostly handled by variables) */
+.dark-mode .service-item {
+  /* background-color: var(--dm-card-background); Already handled by --background-card */
+  /* border-color: var(--dm-border-color); Already handled by --current-theme-border */
+}

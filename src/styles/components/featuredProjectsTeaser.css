@@ -1,0 +1,48 @@
+/* src/styles/components/featuredProjectsTeaser.css */
+.featured-projects-section {
+  background-color: var(--background-section-alt); /* Alternate background color */
+  /* .section-padding adds top/bottom padding */
+}
+
+.dark-mode .featured-projects-section {
+  background-color: var(--dm-background-section-alt, #232B3B); /* Dark mode alternate bg */
+}
+
+.section-header {
+  margin-bottom: var(--space-xl);
+}
+
+.section-title {
+  font-size: 2.2rem; /* Adjust as needed */
+  color: var(--text-color-heading);
+  margin-bottom: var(--space-sm);
+}
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
+
+.section-subtitle {
+  font-size: var(--fs-lg);
+  color: var(--text-color-muted);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xxl);
+}
+
+/* Styles for ProjectCard itself will be in src/styles/components/projectCard.css (or similar) */
+/* This ensures ProjectCard styles are consistent wherever it's used. */
+/* Example: You'd typically import ProjectCard.css within ProjectCard.jsx */
+
+.view-all-projects-cta {
+  margin-top: var(--space-xl);
+}

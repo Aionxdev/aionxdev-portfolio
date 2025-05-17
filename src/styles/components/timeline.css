@@ -1,0 +1,190 @@
+/* src/styles/components/timeline.css */
+.timeline-section {
+  background-color: var(--background-section-alt); /* Or keep it same as page */
+}
+
+.timeline-section .section-title {
+  margin-bottom: var(--space-xl);
+  color: var(--text-color-heading);
+}
+
+.timeline-container {
+  position: relative;
+  max-width: 800px; /* Adjust as needed */
+  margin: 0 auto;
+}
+
+/* The vertical line */
+.timeline-container::after {
+  content: '';
+  position: absolute;
+  width: 3px; /* Line thickness */
+  background-color: var(--primary-color-lighter); /* Lighter version of primary */
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1.5px; /* Half of the line thickness */
+  z-index: 1;
+}
+
+@media (max-width: 767px) { /* Mobile: line to the left */
+  .timeline-container::after {
+    left: 20px; /* Position for mobile */
+    margin-left: 0;
+  }
+}
+
+.timeline-item {
+  padding: var(--space-md) var(--space-lg);
+  position: relative;
+  background-color: transparent; /* Items are 'on' the line */
+  width: 50%;
+  z-index: 2;
+}
+
+/* Alternating sides for desktop */
+.timeline-item:nth-child(odd) {
+  left: 0;
+  padding-right: calc(var(--space-lg) + 30px); /* Space from center line */
+  text-align: right;
+}
+.timeline-item:nth-child(even) {
+  left: 50%;
+  padding-left: calc(var(--space-lg) + 30px); /* Space from center line */
+  text-align: left;
+}
+
+/* Arrow pointing to the line */
+.timeline-item::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px; /* Align with icon or title */
+  width: 0;
+  z-index: 2;
+  border: medium solid var(--background-card); /* Same as item content bg */
+}
+.timeline-item:nth-child(odd)::before {
+  right: 20px; /* Adjust to align with the icon position */
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent var(--background-card);
+}
+.timeline-item:nth-child(even)::before {
+  left: 20px; /* Adjust */
+  border-width: 10px 10px 10px 0;
+  border-color: transparent var(--background-card) transparent transparent;
+}
+
+/* Icon wrapper and icon */
+.timeline-item-icon-wrapper {
+  position: absolute;
+  top: 15px; /* Align with title or slightly above */
+  z-index: 3; /* Above the line and item background */
+}
+.timeline-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  border: 3px solid var(--background-section-alt); /* Match timeline section bg */
+  box-shadow: var(--shadow-sm);
+}
+.timeline-item-icon .default-icon-placeholder { /* If not using react-icons */
+  width: 10px;
+  height: 10px;
+  background-color: var(--text-color-light);
+  border-radius: 50%;
+}
+
+
+.timeline-item:nth-child(odd) .timeline-item-icon-wrapper {
+  right: -20px; /* Half of icon width */
+  transform: translateX(0%);
+}
+.timeline-item:nth-child(even) .timeline-item-icon-wrapper {
+  left: -20px;
+  transform: translateX(0%);
+}
+
+.timeline-item-content {
+  padding: var(--space-lg);
+  background-color: var(--background-card);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  position: relative; /* For pseudo-elements like arrows */
+}
+
+.timeline-item-date {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--text-color-muted);
+  margin-bottom: var(--space-xs);
+  font-weight: 500;
+}
+
+.timeline-item-title {
+  font-size: 1.25rem; /* h3 size */
+  color: var(--text-color-heading);
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+  font-weight: 600;
+}
+
+.timeline-item-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--current-theme-text);
+  margin-bottom: 0;
+}
+
+/* Mobile specific timeline styles */
+@media (max-width: 767px) {
+  .timeline-item {
+    width: 100%;
+    padding-left: calc(20px + var(--space-lg) + 10px); /* Icon left + icon width + padding */
+    padding-right: var(--space-sm); /* Reset right padding */
+    text-align: left; /* All items align left */
+  }
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    left: 0; /* Reset left positioning */
+    padding-right: var(--space-sm);
+    padding-left: calc(20px + var(--space-lg) + 10px);
+  }
+
+  .timeline-item::before { /* Mobile arrow */
+    left: 50px; /* (icon left offset + icon width/2) - arrow width/2 */
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--background-card) transparent transparent;
+  }
+  .timeline-item:nth-child(odd)::before,
+  .timeline-item:nth-child(even)::before {
+    left: calc(20px + 20px - 5px); /* (icon left offset + icon width/2) - arrow width/2 */
+  }
+
+
+  .timeline-item-icon-wrapper {
+    left: 0; /* Icons on the far left line */
+    transform: translateX(0%);
+  }
+  .timeline-item:nth-child(odd) .timeline-item-icon-wrapper,
+  .timeline-item:nth-child(even) .timeline-item-icon-wrapper {
+    left: 0;
+  }
+}
+
+/* Dark mode adjustments for timeline (mostly handled by variables) */
+.dark-mode .timeline-item::before {
+  border-color: transparent var(--background-card) transparent transparent; /* Uses variable */
+}
+.dark-mode .timeline-item:nth-child(odd)::before {
+  border-color: transparent transparent transparent var(--background-card);
+}
+.dark-mode .timeline-item-icon {
+  border-color: var(--background-section-alt); /* Uses variable */
+}

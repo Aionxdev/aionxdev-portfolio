@@ -1,0 +1,181 @@
+/* src/styles/components/heroSection.css */
+.hero-section {
+  min-height: 90vh; /* Nearly full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* Center content by default */
+  padding: var(--space-xxl) 0;
+  position: relative; /* For scroll down indicator */
+  background-color: var(--background-light); /* Or a gradient, or image */
+  /* Example Gradient:
+  background: linear-gradient(135deg, var(--primary-color-lighter) 0%, var(--secondary-color) 100%);
+  color: var(--text-color-light);
+  */
+}
+
+.dark-mode .hero-section {
+  /* background-color: var(--dm-background); */ /* Handled by theme variables on body */
+  /* Example Gradient for dark mode:
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color-darker) 100%);
+  */
+}
+
+
+.hero-container {
+  /* Default .container styles apply */
+  display: flex; /* For potential two-column layout with image */
+  align-items: center;
+  justify-content: center; /* Center content if single column */
+}
+
+.hero-content {
+  max-width: 800px; /* Constrain text width for readability */
+  margin: 0 auto; /* Center content block */
+}
+
+.hero-greeting {
+  font-size: 1.2rem;
+  color: var(--text-color-muted);
+  margin-bottom: var(--space-xs);
+  font-weight: 500;
+}
+.dark-mode .hero-greeting {
+  color: var(--dm-text-color-muted, #A0AEC0);
+}
+
+.hero-name {
+  font-size: clamp(2.5rem, 8vw, 5rem); /* Responsive font size */
+  color: var(--primary-color); /* Name in primary color */
+  font-family: var(--font-secondary); /* Distinct font for name */
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  line-height: 1.1;
+  letter-spacing: -1px; /* Optional: tighter letter spacing for large text */
+}
+
+.hero-tagline {
+  font-size: clamp(1.5rem, 4vw, 2.5rem); /* Responsive font size */
+  color: var(--text-color-heading);
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+  line-height: 1.3;
+  min-height: 60px; /* Reserve space for typewriter text to prevent layout shifts */
+}
+.hero-tagline .typewriter-text { /* Style for the Typewriter component's output */
+  color: var(--secondary-color); /* Typewriter text in secondary color */
+  /* Ensure cursor color matches or contrasts well */
+}
+.hero-tagline .typewriter-cursor {
+  color: var(--secondary-color);
+}
+.dark-mode .hero-tagline .typewriter-text,
+.dark-mode .hero-tagline .typewriter-cursor {
+  color: var(--secondary-color); /* Adjust if needed for dark mode */
+}
+
+
+.hero-intro {
+  font-size: var(--fs-lg); /* 1.125rem or 18px */
+  color: var(--text-color);
+  line-height: 1.7;
+  margin-bottom: var(--space-xl);
+  max-width: 700px; /* Keep intro paragraph width readable */
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-intro .highlight {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+
+.hero-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+.hero-cta-buttons .btn {
+  min-width: 180px; /* Ensure buttons have a decent minimum width */
+}
+
+/* Optional Hero Image Styling */
+.hero-image-container {
+  display: none; /* Hidden by default, enable if using a two-column layout */
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+.hero-illustration {
+  max-width: 450px;
+  width: 100%;
+  height: auto;
+}
+
+/* Example: Two-column layout for larger screens */
+@media (min-width: 992px) {
+  .hero-section {
+    text-align: left; /* Align text left for two-column layout */
+  }
+  .hero-container {
+    justify-content: space-between; /* Space between text and image */
+  }
+  .hero-content {
+    flex: 1.2; /* Give more space to text content */
+    max-width: 650px; /* Adjust max width */
+    margin: 0; /* Reset auto margins */
+  }
+  .hero-cta-buttons {
+    justify-content: flex-start; /* Align buttons to the left */
+  }
+  .hero-image-container {
+    display: flex; /* Show image container */
+    padding-left: var(--space-xl); /* Space from text */
+  }
+  .hero-intro {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* Scroll Down Indicator */
+.scroll-down-indicator {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  color: var(--text-color-muted);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.scroll-down-indicator:hover {
+  opacity: 0.7;
+  color: var(--primary-color);
+}
+.mouse {
+  width: 25px;
+  height: 40px;
+  border: 2px solid currentColor;
+  border-radius: 20px;
+  position: relative;
+  display: block;
+}
+.mouse span {
+  width: 4px;
+  height: 8px;
+  background-color: currentColor;
+  border-radius: 2px;
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translateX(-50%);
+  animation: scroll-anim 1.5s infinite ease-out;
+}
+
+@keyframes scroll-anim {
+  0% { top: 8px; opacity: 1; }
+  50% { top: 16px; opacity: 0.5; }
+  100% { top: 24px; opacity: 0; }
+}

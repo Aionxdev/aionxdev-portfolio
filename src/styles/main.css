@@ -1,0 +1,332 @@
+/* src/styles/main.css */
+
+/* ------------------------- */
+/* ----- CSS VARIABLES ----- */
+/* ------------------------- */
+:root {
+  /* Typography */
+  --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-secondary: 'Roboto Slab', serif; /* Example for headings or accents */
+  --font-code: 'Fira Code', 'Courier New', monospace;
+
+  /* Base Font Sizes & Line Heights */
+  --fs-base: 1rem; /* Typically 16px */
+  --fs-sm: 0.875rem; /* 14px */
+  --fs-lg: 1.125rem; /* 18px */
+  --lh-base: 1.65;
+  --lh-heading: 1.3;
+
+  /* Spacing */
+  --space-xs: 0.25rem;  /* 4px */
+  --space-sm: 0.5rem;   /* 8px */
+  --space-md: 1rem;     /* 16px */
+  --space-lg: 1.5rem;   /* 24px */
+  --space-xl: 2rem;     /* 32px */
+  --space-xxl: 3rem;    /* 48px */
+
+  /* Borders & Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-width: 1px;
+  --border-width-bold: 2px;
+
+  /* Transitions */
+  --transition-short: 0.2s ease-in-out;
+  --transition-base: 0.3s ease-in-out;
+
+  /* Max Width for Container */
+  --container-max-width: 1200px;
+  --container-padding: 1.5rem; /* Padding for smaller screens */
+
+  /* Z-Indexes (example values) */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-quick-contact: 1060;
+  --z-index-header: 1030;
+
+
+  /* Light Theme Colors (Default) */
+  --primary-color: #FF6464; /* Coral red/orange from inspiration */
+  --primary-color-darker: #e05252;
+  --primary-color-lighter: #ff8a8a;
+  --secondary-color: #4A90E2; /* Example secondary blue */
+  --secondary-color-darker: #357ABD;
+  --accent-color: #F5A623; /* Example accent orange/yellow */
+
+  --text-color-dark: #21243D;
+  --text-color-light: #FFFFFF;
+  --text-color-muted: #8695A4;
+  --text-color-heading: #1A202C; /* Slightly different from body text if desired */
+  --text-color-link: var(--primary-color);
+  --text-color-link-hover: var(--primary-color-darker);
+
+  --background-light: #FFFFFF;
+  --background-body: #F8F9FA; /* Slightly off-white for body */
+  --background-section-alt: #EDF7FA; /* Light blue-gray from inspiration */
+  --background-card: #FFFFFF;
+  --background-input: #FFFFFF;
+
+  --border-color-light: #E0E0E0;
+  --border-color-dark: #CBD5E0; /* For slightly darker borders */
+  --border-color-input: #D1D5DB;
+
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-xs: 0 1px 2px 0 var(--shadow-color);
+  --shadow-sm: 0 1px 3px 0 var(--shadow-color), 0 1px 2px -1px var(--shadow-color);
+  --shadow-md: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color);
+  --shadow-lg: 0 10px 15px -3px var(--shadow-color), 0 4px 6px -4px var(--shadow-color);
+  --shadow-xl: 0 20px 25px -5px var(--shadow-color), 0 8px 10px -6px var(--shadow-color);
+}
+
+/* -------------------- */
+/* ----- RESETS & ----- */
+/* -- BASE STYLES --- */
+/* -------------------- */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1, h2, h3, h4, h5, h6,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul, ol {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  padding: 0;
+}
+
+/* Set core root defaults */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  font-family: var(--font-primary);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  background-color: var(--background-body); /* Uses CSS variable from theme */
+  color: var(--text-color); /* Uses CSS variable from theme */
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+a {
+  color: var(--text-color-link);
+  text-decoration: none;
+  transition: color var(--transition-short);
+}
+a:hover {
+  color: var(--text-color-link-hover);
+  text-decoration: underline; /* Or none if you prefer */
+}
+
+/* Make images responsive by default */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove built-in form typography styles */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* Create a root stacking context */
+#root, #modal-root {
+  isolation: isolate;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary); /* Or --font-primary if you prefer consistency */
+  line-height: var(--lh-heading);
+  color: var(--text-color-heading);
+  margin-bottom: var(--space-md);
+}
+
+h1 { font-size: 2.5rem; }   /* ~40px */
+h2 { font-size: 2rem; }     /* ~32px */
+h3 { font-size: 1.75rem; }  /* ~28px */
+h4 { font-size: 1.5rem; }   /* ~24px */
+h5 { font-size: 1.25rem; }  /* ~20px */
+h6 { font-size: 1rem; }     /* ~16px */
+
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+}
+
+
+p {
+  margin-bottom: var(--space-md);
+}
+
+strong {
+  font-weight: 600; /* Or bold */
+}
+
+/* ------------------------- */
+/* ----- CONTAINER ----- */
+/* ------------------------- */
+.container {
+  width: 90%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* Full-width container variant for specific sections */
+.container-fluid {
+  width: 100%;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+@media (min-width: 768px) {
+  .container-fluid {
+    padding-left: calc(var(--container-padding) * 2);
+    padding-right: calc(var(--container-padding) * 2);
+  }
+}
+
+/* ------------------------- */
+/* ----- UTILITIES ----- */
+/* ------------------------- */
+.sr-only { /* Screen-reader only */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.d-block { display: block; }
+.d-inline-block { display: inline-block; }
+.d-flex { display: flex; }
+.d-inline-flex { display: inline-flex; }
+.d-none { display: none; }
+
+.mt-1 { margin-top: var(--space-sm); }
+.mb-1 { margin-bottom: var(--space-sm); }
+.mt-2 { margin-top: var(--space-md); }
+.mb-2 { margin-bottom: var(--space-md); }
+.mt-3 { margin-top: var(--space-lg); }
+.mb-3 { margin-bottom: var(--space-lg); }
+/* Add more spacing utilities as needed */
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Section padding utility */
+.section-padding {
+  padding-top: var(--space-xxl);
+  padding-bottom: var(--space-xxl);
+}
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
+}
+
+/* Add transitions to common elements for theme switch */
+button, input, select, textarea, .card {
+  transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base);
+}
+
+/* Scrollbar styling (Optional, subtle) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background-body);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-color-muted);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* Global focus style for accessibility */
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(var(--primary-color-rgb, 255, 100, 100), 0.3); /* Add --primary-color-rgb */
+}
+/* Define --primary-color-rgb by extracting RGB values from your --primary-color */
+/* For example, if --primary-color: #FF6464; then --primary-color-rgb: 255, 100, 100; */
+/* This needs to be updated manually or with a JS script if you change --primary-color */
+/* Alternatively, use a less dynamic box-shadow or stick to outline only. */
+
+/* Placeholder for --primary-color-rgb, replace with actual values from your --primary-color */
+:root {
+  /* ... other variables ... */
+  --primary-color-rgb: 255, 100, 100; /* Derived from #FF6464 */
+}
+
+/* If using Poppins or Roboto Slab, ensure you import them via @font-face or a link in index.html */
+/* Example for Google Fonts in index.html:
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"> <!-- For code font -->
+*/

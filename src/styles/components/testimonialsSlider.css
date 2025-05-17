@@ -1,0 +1,185 @@
+/* src/styles/components/testimonialsSlider.css */
+
+.testimonials-slider-section {
+  background-color: var(--background-section-alt);
+  /* .section-padding from main.css */
+}
+.dark-mode .testimonials-slider-section {
+  background-color: var(--dm-background-section-alt, #232B3B);
+}
+
+.testimonials-slider-section .section-header {
+  margin-bottom: var(--space-xl);
+}
+.testimonials-slider-section .section-title {
+  color: var(--text-color-heading);
+}
+.testimonials-slider-section .section-subtitle {
+  color: var(--text-color-muted);
+}
+
+/* Swiper Specific Styles */
+.testimonials-swiper {
+  width: 100%;
+  padding-top: 20px; /* Space for pagination/shadows */
+  padding-bottom: 50px; /* Space for pagination/shadows */
+}
+
+.testimonial-swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 320px; /* Default width for a slide, adjust with breakpoints */
+  /* height: auto; */ /* Let content determine height */
+  display: flex; /* Helps with centering content if needed */
+  justify-content: center;
+  align-items: center;
+  /* For coverflow effect, shadows might be added by Swiper */
+}
+@media (min-width: 768px) {
+    .testimonial-swiper-slide {
+        width: 350px;
+    }
+}
+@media (min-width: 1024px) {
+    .testimonial-swiper-slide {
+        width: 400px; /* Adjust for coverflow view */
+    }
+}
+
+
+/* Testimonial Card Styles (within the slider) */
+.testimonial-card {
+    background-color: var(--background-card);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--current-theme-border);
+    width: 100%; /* Take full width of the SwiperSlide */
+    height: 100%; /* Take full height if SwiperSlide has fixed height */
+    display: flex;
+    flex-direction: column;
+    min-height: 300px; /* Ensure a minimum height for consistency */
+}
+.dark-mode .testimonial-card {
+  /* background-color: var(--dm-card-background); Handled by --background-card */
+}
+
+.testimonial-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+    gap: var(--space-md);
+}
+
+.testimonial-author-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color-lighter);
+}
+.testimonial-author-placeholder-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.testimonial-author-info {
+    text-align: left;
+}
+.testimonial-author-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color-heading);
+    margin: 0 0 2px 0;
+}
+.testimonial-author-role,
+.testimonial-author-company {
+    font-size: var(--fs-sm);
+    color: var(--text-color-muted);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.testimonial-card-body {
+  position: relative; /* For quote icon positioning */
+    flex-grow: 1;
+}
+.quote-icon {
+    font-size: 2rem;
+    color: var(--primary-color-lighter);
+    opacity: 0.5;
+    position: absolute;
+    top: -10px; /* Adjust positioning */
+    left: -10px; /* Adjust positioning */
+    z-index: 0;
+}
+.dark-mode .quote-icon {
+    color: var(--primary-color);
+    opacity: 0.3;
+}
+
+.testimonial-quote {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--current-theme-text);
+    font-style: italic;
+    position: relative; /* To ensure text is above quote icon */
+    z-index: 1;
+    margin-bottom: 0;
+}
+
+/* Swiper Pagination and Navigation custom styling */
+.testimonials-swiper .swiper-pagination-bullet {
+    background-color: var(--primary-color);
+    opacity: 0.6;
+    width: 10px;
+    height: 10px;
+}
+.testimonials-swiper .swiper-pagination-bullet-active {
+    background-color: var(--primary-color);
+    opacity: 1;
+    width: 12px; /* Make active bullet slightly larger */
+    height: 12px;
+}
+
+.testimonials-swiper .swiper-button-next,
+.testimonials-swiper .swiper-button-prev {
+    color: var(--primary-color);
+    background-color: rgba(var(--background-card-rgb, 255, 255, 255), 0.7); /* Slightly transparent background */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.3s ease;
+}
+.testimonials-swiper .swiper-button-next:hover,
+.testimonials-swiper .swiper-button-prev:hover {
+    background-color: rgba(var(--primary-color-rgb, 255, 100, 100), 0.2);
+}
+
+.testimonials-swiper .swiper-button-next::after,
+.testimonials-swiper .swiper-button-prev::after {
+    font-size: 1.2rem; /* Smaller arrows */
+    font-weight: bold;
+}
+
+.dark-mode .testimonials-swiper .swiper-button-next,
+.dark-mode .testimonials-swiper .swiper-button-prev {
+    background-color: rgba(var(--dm-card-background-rgb, 45, 55, 72), 0.7);
+}
+.dark-mode .testimonials-swiper .swiper-button-next:hover,
+.dark-mode .testimonials-swiper .swiper-button-prev:hover {
+    background-color: rgba(var(--primary-color-rgb, 255, 100, 100), 0.3);
+}
+
+/* Ensure RGB variables are defined in main.css and theme.css
+:root { --background-card-rgb: 255, 255, 255; --primary-color-rgb: 255, 100, 100; }
+.dark-mode { --dm-card-background-rgb: 45, 55, 72; }
+*/

@@ -1,0 +1,55 @@
+/* src/styles/notFoundPage.css */
+.not-found-page {
+  min-height: 70vh; /* Ensure it takes up a good portion of the screen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-body); /* Or a distinct background */
+  /* .section-padding from main.css */
+}
+
+.not-found-icon {
+  font-size: 5rem; /* Large icon */
+  color: var(--accent-color); /* Or primary-color */
+  margin-bottom: var(--space-lg);
+}
+.not-found-icon img { /* If using an image/SVG illustration */
+  max-width: 250px;
+  margin: 0 auto var(--space-lg) auto;
+}
+
+.not-found-title {
+  font-size: 2.5rem;
+  color: var(--text-color-heading);
+  margin-bottom: var(--space-md);
+}
+@media (max-width: 768px) {
+  .not-found-title {
+    font-size: 2rem;
+  }
+}
+
+.not-found-message {
+  font-size: var(--fs-lg);
+  color: var(--text-color-muted);
+  margin-bottom: var(--space-sm);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.not-found-suggestion {
+  font-size: 1rem;
+  color: var(--text-color-muted);
+  margin-bottom: var(--space-xl);
+}
+
+.not-found-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+.not-found-actions .btn {
+  min-width: 180px;
+}

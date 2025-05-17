@@ -1,0 +1,230 @@
+/* src/styles/blogPostPage.css */
+.blog-post-full {
+  background-color: var(--background-card); /* Or page background */
+  padding: var(--space-xl);
+  border-radius: var(--border-radius-md);
+  /* box-shadow: var(--shadow-lg); */ /* Optional shadow for the whole post container */
+  border: 1px solid var(--current-theme-border);
+  margin-bottom: var(--space-xl); /* If not the only item in BlogLayout */
+}
+.dark-mode .blog-post-full {
+  /* background-color: var(--dm-card-background); Handled by --background-card */
+}
+
+.blog-post-header {
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--current-theme-border);
+}
+.back-to-blog-button {
+  margin-bottom: var(--space-md);
+  color: var(--text-color-muted);
+  font-weight: 500;
+  padding-left: 0; /* Align with text better */
+}
+.back-to-blog-button:hover {
+  color: var(--primary-color);
+}
+
+.blog-post-title-full {
+  font-size: clamp(1.8rem, 5vw, 2.8rem); /* Responsive */
+  color: var(--text-color-heading);
+  line-height: 1.2;
+  margin-bottom: var(--space-sm);
+}
+
+.blog-post-meta-full {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  font-size: var(--fs-sm);
+  color: var(--text-color-muted);
+  margin-bottom: var(--space-lg);
+}
+.blog-post-meta-full .meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.blog-post-meta-full .meta-item svg {
+  font-size: 0.9em;
+}
+
+.blog-post-featured-image {
+  width: 100%;
+  max-height: 450px; /* Or adjust */
+  object-fit: cover;
+  border-radius: var(--border-radius-md);
+  margin-top: var(--space-lg);
+  /* box-shadow: var(--shadow-md); */
+}
+
+.blog-post-content-full {
+  font-size: 1.05rem; /* Or var(--fs-lg) for better readability */
+  line-height: 1.8;
+  color: var(--current-theme-text);
+}
+/* Styles for elements within dangerouslySetInnerHTML (content) */
+.blog-post-content-full p {
+  margin-bottom: var(--space-lg);
+}
+.blog-post-content-full h2,
+.blog-post-content-full h3,
+.blog-post-content-full h4 {
+  color: var(--text-color-heading);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+}
+.blog-post-content-full h2 { font-size: 1.8rem; }
+.blog-post-content-full h3 { font-size: 1.5rem; }
+.blog-post-content-full h4 { font-size: 1.3rem; }
+
+.blog-post-content-full a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+.blog-post-content-full a:hover {
+  color: var(--primary-color-darker);
+}
+
+.blog-post-content-full ul,
+.blog-post-content-full ol {
+  margin-bottom: var(--space-lg);
+  padding-left: var(--space-xl); /* Indent lists */
+}
+.blog-post-content-full li {
+  margin-bottom: var(--space-sm);
+}
+
+.blog-post-content-full blockquote {
+  margin: var(--space-lg) 0;
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--background-section-alt);
+  border-left: 4px solid var(--primary-color);
+  font-style: italic;
+  color: var(--text-color-muted);
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+}
+.dark-mode .blog-post-content-full blockquote {
+  background-color: var(--dm-background-section-alt, #232B3B);
+}
+
+.blog-post-content-full pre {
+  background-color: var(--text-color-dark); /* Dark background for code blocks */
+  color: #f8f8f2; /* Light text for code */
+  padding: var(--space-lg);
+  border-radius: var(--border-radius-md);
+  overflow-x: auto;
+  font-family: var(--font-code);
+  font-size: 0.9rem;
+  margin: var(--space-lg) 0;
+}
+.dark-mode .blog-post-content-full pre {
+  background-color: #282a36; /* Example Dracula theme bg */
+}
+.blog-post-content-full code:not(pre > code) { /* Inline code */
+  background-color: var(--background-section-alt);
+  color: var(--primary-color);
+  padding: 2px 5px;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-code);
+  font-size: 0.9em;
+}
+.dark-mode .blog-post-content-full code:not(pre > code) {
+  background-color: var(--dm-background-section-alt, #383a59); /* Slightly different for dark mode */
+}
+
+.blog-post-content-full img { /* Images within post content */
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-md);
+  margin: var(--space-lg) auto; /* Center images */
+  display: block;
+  box-shadow: var(--shadow-md);
+}
+
+.blog-post-footer {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--current-theme-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+@media (min-width: 768px) {
+  .blog-post-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.blog-post-tags-full {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+  font-size: var(--fs-sm);
+}
+.tags-icon-full {
+  color: var(--text-color-muted);
+  margin-right: var(--space-xs);
+}
+.tag-link {
+  background-color: var(--background-section-alt);
+  color: var(--text-color-muted);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 15px; /* Pill shape */
+  text-decoration: none;
+  transition: background-color var(--transition-short), color var(--transition-short);
+  border: 1px solid var(--border-color-light);
+}
+.tag-link:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  border-color: var(--primary-color);
+}
+.dark-mode .tag-link {
+  background-color: var(--dm-background-section-alt, #232B3B);
+  color: var(--dm-text-color-muted, #A0AEC0);
+  border-color: var(--border-color-light);
+}
+.dark-mode .tag-link:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color-dark); /* Light text on primary color */
+}
+
+
+.blog-post-share {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--fs-sm);
+  color: var(--text-color-muted);
+}
+.blog-post-share span {
+  margin-right: var(--space-xs);
+  font-weight: 500;
+}
+.share-button {
+  background: none;
+  border: 1px solid var(--border-color-input);
+  color: var(--text-color-muted);
+  border-radius: 50%; /* Circular buttons */
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color var(--transition-short), color var(--transition-short), border-color var(--transition-short);
+  font-size: 1rem;
+}
+.share-button:hover {
+  border-color: currentColor; /* Border matches icon color on hover */
+}
+.share-button.facebook:hover { color: #1877F2; }
+.share-button.twitter:hover { color: #1DA1F2; }
+.share-button.linkedin:hover { color: #0A66C2; }
+.share-button.copy-link:hover { color: var(--primary-color); }

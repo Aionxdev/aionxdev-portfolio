@@ -1,0 +1,35 @@
+/* src/styles/components/darkModeToggle.css */
+.dark-mode-toggle {
+  background: none;
+  border: 1px solid var(--border-color, #ccc); /* Or transparent */
+  color: var(--text-color-dark); /* Changes with theme */
+  padding: 8px;
+  border-radius: 50%; /* Make it circular */
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  font-size: 1.2rem; /* Adjust icon size */
+  width: 40px; /* Ensure consistent size */
+  height: 40px;
+}
+
+.dark-mode-toggle:hover {
+  background-color: var(--background-section-alt, #f0f0f0); /* Subtle hover */
+}
+
+.dark-mode-toggle .toggle-icon {
+  display: block; /* Helps with alignment */
+}
+
+/* Dark mode specific styles for the button itself */
+/* These would typically be in theme.css or handled by CSS variables */
+.dark-mode .dark-mode-toggle {
+  /* Example: if you have a .dark-mode class on body */
+  color: var(--dm-text-color, #e0e0e0);
+  border-color: var(--dm-text-color, #555);
+}
+.dark-mode .dark-mode-toggle:hover {
+  background-color: var(--dm-card-background, #333);
+}

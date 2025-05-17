@@ -1,0 +1,136 @@
+/* src/styles/components/pricingPlan.css */
+.pricing-plan-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* For consistent height in a grid */
+  background-color: var(--background-card);
+  border: 1px solid var(--current-theme-border);
+  border-radius: var(--border-radius-lg); /* Slightly more rounded for pricing cards */
+  padding: var(--space-xl);
+  position: relative; /* For featured badge */
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.pricing-plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.pricing-plan-card.featured {
+  border-color: var(--primary-color);
+  border-width: 2px;
+  box-shadow: var(--shadow-xl); /* More prominent shadow */
+  transform: scale(1.03); /* Slightly larger */
+}
+.pricing-plan-card.featured:hover {
+  transform: scale(1.05) translateY(-5px); /* Enhanced hover for featured */
+}
+
+
+.featured-badge {
+  position: absolute;
+  top: -15px; /* Position it slightly outside the card */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  box-shadow: var(--shadow-md);
+}
+
+.pricing-plan-header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+.pricing-plan-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: var(--space-sm);
+}
+
+.pricing-plan-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color-heading);
+  margin-bottom: var(--space-sm);
+}
+
+.pricing-plan-price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: var(--space-xs);
+  line-height: 1;
+}
+.pricing-plan-card.featured .pricing-plan-price {
+  font-size: 2.8rem; /* Larger price for featured */
+}
+.billing-cycle {
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  color: var(--text-color-muted);
+  margin-left: var(--space-xs);
+}
+
+.pricing-plan-description {
+  font-size: var(--fs-sm);
+  color: var(--text-color-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.pricing-plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-lg) 0;
+  flex-grow: 1; /* Make features list take available space */
+}
+.feature-item {
+  display: flex;
+  align-items: flex-start; /* Align icon with first line of text */
+  gap: var(--space-sm);
+  font-size: 0.95rem;
+  color: var(--current-theme-text);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border-color-light);
+}
+.feature-item:last-child {
+  border-bottom: none;
+}
+.feature-item.excluded {
+  color: var(--text-color-muted);
+  text-decoration: line-through;
+}
+.feature-icon {
+  margin-top: 0.15em; /* Align icon slightly better with text */
+  font-size: 1.1em; /* Relative to feature text size */
+}
+.feature-icon.included {
+  color: green; /* Or your success color */
+}
+.feature-icon.excluded {
+  color: #aaa; /* Or your disabled/error color */
+}
+.dark-mode .feature-icon.included {
+  color: lightgreen;
+}
+
+
+.pricing-plan-cta {
+  margin-top: auto; /* Push button to bottom */
+}
+.pricing-plan-cta .full-width-btn { /* Ensure button in Button.jsx handles this class or style directly */
+  width: 100%;
+}
+
+/* Dark mode adjustments */
+.dark-mode .pricing-plan-card {
+  /* border-color: var(--dm-border-color); Handled by --current-theme-border */
+}
+.dark-mode .pricing-plan-card.featured {
+  border-color: var(--primary-color); /* Primary color should adapt for dark mode if needed */
+}

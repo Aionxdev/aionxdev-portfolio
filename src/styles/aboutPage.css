@@ -1,0 +1,12 @@
+/* src/styles/aboutPage.css */
+.about-page {
+  /* General styles for the about page, if any beyond component styles */
+}
+
+/* Styles for the skills-preview-section if you use it this way */
+.skills-preview-section .section-title {
+  color: var(--text-color-heading);
+}
+.skills-preview-section .section-subtitle {
+  color: var(--text-color-muted);
+}

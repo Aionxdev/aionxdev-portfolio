@@ -1,0 +1,27 @@
+/* src/styles/homePage.css */
+.home-page {
+  /* Styles specific to the overall home page layout, if any */
+  /* Most styles will be within the imported components (HeroSection, etc.) */
+  /* or handled by global styles (.section-padding, .container) */
+}
+
+/* Example for an About Teaser section if you add one */
+.about-teaser-section {
+  background-color: var(--background-light); /* Or specific color */
+}
+.about-teaser-section h2 {
+  margin-bottom: var(--space-md);
+  font-size: 2rem;
+  color: var(--text-color-heading);
+}
+.about-teaser-section p {
+  font-size: var(--fs-lg);
+  color: var(--text-color-muted);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--space-xl);
+}
+
+/* CTA Section specific styles if not handled in its own component CSS */
+/* (Assuming CallToActionSection has its own CSS or uses utility classes) */

@@ -1,0 +1,38 @@
+/* src/styles/components/blogLayout.css */
+.blog-layout {
+  /* .container and .section-padding provide base structure */
+}
+
+.blog-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Default single column */
+  gap: var(--space-xl);
+}
+
+.blog-layout-grid.with-sidebar {
+  /* Desktop layout with sidebar */
+  @media (min-width: 992px) {
+    grid-template-columns: 2.5fr 1fr; /* Main content takes more space */
+    /* Example: grid-template-areas: "main sidebar"; */
+    gap: var(--space-xxl);
+  }
+}
+
+.blog-main-content {
+  /* Styles for the main content area (where posts or post lists go) */
+  /* grid-area: main; */ /* If using grid-template-areas */
+}
+
+.blog-sidebar-container {
+  /* Styles for the sidebar area */
+  /* grid-area: sidebar; */ /* If using grid-template-areas */
+  /* Sticky sidebar (optional) */
+  @media (min-width: 992px) {
+    position: sticky;
+    top: calc(var(--header-height, 80px) + var(--space-lg)); /* Adjust --header-height */
+    align-self: flex-start; /* Prevent stretching if grid row is tall */
+    max-height: calc(100vh - var(--header-height, 80px) - var(--space-lg) * 2); /* Prevent overflow */
+    overflow-y: auto; /* Allow sidebar to scroll if content is too long */
+  }
+}
+/* Ensure --header-height is defined in main.css or theme.css */

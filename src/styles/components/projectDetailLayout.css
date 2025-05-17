@@ -1,0 +1,206 @@
+/* src/styles/components/projectDetailLayout.css */
+.project-detail-layout {
+  /* .section-padding provides top/bottom padding */
+  background-color: var(--background-body); /* Or a specific page background */
+}
+
+.project-detail-header {
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--current-theme-border);
+  position: relative;
+}
+.back-button {
+  /* position: absolute; top: 0; left: 0; */ /* If you want it absolutely positioned */
+  margin-bottom: var(--space-md);
+  color: var(--text-color-muted);
+  font-weight: 500;
+}
+.back-button:hover {
+  color: var(--primary-color);
+}
+
+.project-detail-title {
+  font-size: clamp(2rem, 5vw, 3rem); /* Responsive title */
+  color: var(--text-color-heading);
+  margin-bottom: var(--space-xs);
+  line-height: 1.2;
+}
+
+.project-detail-category-status {
+  font-size: var(--fs-sm);
+  color: var(--text-color-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+}
+.project-detail-category-status .category,
+.project-detail-category-status .status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: 500;
+}
+.project-detail-category-status .status {
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius-sm);
+  color: var(--text-color-light); /* Assuming status badges have dark bg */
+}
+.project-detail-category-status .status-live { background-color: green; }
+.project-detail-category-status .status-under-development { background-color: var(--accent-color); color: var(--text-color-dark); }
+.project-detail-category-status .status-concept { background-color: var(--secondary-color); }
+
+
+.project-detail-main-content {
+  display: grid;
+  grid-template-columns: 1fr; /* Default single column for mobile */
+  gap: var(--space-xl);
+}
+@media (min-width: 992px) { /* Desktop: two or three column layout */
+  .project-detail-main-content {
+    /* Example 3-column: media | description | sidebar */
+    /* grid-template-columns: 1.5fr 2fr 1fr; */
+    /* Example 2-column: description | sidebar (media above or integrated) */
+     grid-template-columns: 2fr 1fr; /* Content | Sidebar */
+     grid-template-areas:
+        "media sidebar"
+        "description sidebar";
+     gap: var(--space-xxl);
+  }
+  .project-detail-media { grid-area: media; }
+  .project-detail-description-content { grid-area: description; }
+  .project-detail-sidebar { grid-area: sidebar; }
+}
+
+.project-detail-media {
+  margin-bottom: var(--space-lg); /* Space below media on mobile */
+}
+.project-detail-main-image {
+  width: 100%;
+  max-height: 500px; /* Constrain height */
+  object-fit: cover; /* Or contain if you don't want cropping */
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--current-theme-border);
+}
+
+.project-detail-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-md);
+}
+.gallery-image {
+  width: 100%;
+  border-radius: var(--border-radius-sm);
+  object-fit: cover;
+  aspect-ratio: 16/10; /* Or other aspect ratio */
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--current-theme-border);
+}
+
+
+.project-detail-sidebar {
+  background-color: var(--background-section-alt); /* Subtle background for sidebar */
+  padding: var(--space-lg);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--current-theme-border);
+  align-self: flex-start; /* Keep sidebar from stretching full height of grid area */
+  position: sticky; /* Make sidebar sticky on desktop */
+  top: calc(var(--header-height, 80px) + var(--space-lg)); /* Adjust --header-height based on your actual header */
+}
+.dark-mode .project-detail-sidebar {
+  background-color: var(--dm-background-section-alt, #232B3B);
+}
+/* Define --header-height (you might need JS to calculate actual header height if it's dynamic) */
+:root { --header-height: 80px; }
+
+
+.project-detail-sidebar .sidebar-section {
+  margin-bottom: var(--space-lg);
+}
+.project-detail-sidebar .sidebar-section:last-child {
+  margin-bottom: 0;
+}
+.project-detail-sidebar h4 {
+  font-size: 1.1rem;
+  color: var(--text-color-heading);
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--current-theme-border);
+  padding-bottom: var(--space-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.project-detail-sidebar .full-width-btn {
+  width: 100%;
+  margin-bottom: var(--space-sm);
+}
+.project-detail-sidebar .no-links-msg {
+  font-style: italic;
+  color: var(--text-color-muted);
+  font-size: var(--fs-sm);
+}
+
+.tech-pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+.tech-pill {
+  background-color: var(--background-card); /* Match card bg or slightly different */
+  color: var(--text-color-muted);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 15px; /* Pill shape */
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  border: 1px solid var(--border-color-light);
+}
+.dark-mode .tech-pill {
+  background-color: var(--dm-card-background, #2D3748);
+  color: var(--dm-text-color-muted, #A0AEC0);
+  border-color: var(--border-color-light); /* Which is darker in dark mode */
+}
+
+
+.project-detail-description-content h2 {
+  font-size: 1.8rem;
+  color: var(--text-color-heading);
+  margin-top: 0; /* First h2 might not need top margin */
+  margin-bottom: var(--space-md);
+}
+.project-detail-description-content .project-long-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+  color: var(--current-theme-text);
+}
+.project-detail-description-content .project-full-details {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--current-theme-text);
+}
+.project-full-details p,
+.project-full-details ul,
+.project-full-details ol {
+  margin-bottom: var(--space-md);
+}
+.project-full-details ul, .project-full-details ol {
+  padding-left: var(--space-lg);
+}
+.project-full-details strong {
+  color: var(--primary-color); /* Or a different highlight */
+  font-weight: 600;
+}
+.project-full-details a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+.project-full-details img { /* Styles for images within the details HTML */
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-sm);
+  margin: var(--space-md) 0;
+  box-shadow: var(--shadow-md);
+}

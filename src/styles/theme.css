@@ -1,0 +1,116 @@
+/* src/styles/theme.css */
+
+/* ----------------------------- */
+/* ----- LIGHT MODE THEME ------ */
+/* -- (Already defined in :root in main.css) -- */
+/* ----------------------------- */
+
+body.light-mode {
+  /* Explicitly set light mode variables if they differ from :root defaults */
+  /* Or, :root in main.css serves as the light mode default */
+  --current-theme-background: var(--background-body);
+  --current-theme-text: var(--text-color-dark);
+  --current-theme-card-background: var(--background-card);
+  --current-theme-border: var(--border-color-light);
+  --current-theme-heading: var(--text-color-heading);
+  --current-theme-link: var(--text-color-link);
+  --current-theme-link-hover: var(--text-color-link-hover);
+
+  /* Ensure RGB versions are set for light mode */
+  --background-card-rgb: 255, 255, 255; /* for #FFFFFF */
+  --text-color-muted-rgb: 134, 149, 164; /* for #8695A4 */
+}
+
+
+/* ---------------------------- */
+/* ----- DARK MODE THEME ------ */
+/* ---------------------------- */
+body.dark-mode {
+  /* Dark Theme Colors */
+  --primary-color: #FF7A7A; /* Slightly brighter primary for dark mode */
+  --primary-color-darker: #FF6464;
+  --primary-color-lighter: #ff9d9d;
+  --secondary-color: #68A0E6; /* Slightly brighter secondary */
+  --secondary-color-darker: #4A90E2;
+  --accent-color: #F8B84A; /* Slightly brighter accent */
+
+  --text-color-dark: #E0E0E0; /* This becomes the main text color in dark mode */
+  --text-color-light: #121212; /* For text on light elements in dark mode (rare) */
+  --text-color-muted: #A0AEC0;
+  --text-color-heading: #F7FAFC;
+  --text-color-link: var(--primary-color);
+  --text-color-link-hover: var(--primary-color-lighter);
+
+  --background-light: #2D3748; /* This is a 'light' surface in dark mode */
+  --background-body: #1A202C; /* Main dark background */
+  --background-section-alt: #232B3B; /* Alt section dark background */
+  --background-card: #2D3748; /* Card background in dark mode */
+  --background-input: #2D3748;
+
+  --border-color-light: #4A5568; /* 'Light' border in dark mode */
+  --border-color-dark: #2D3748; /* 'Dark' border in dark mode */
+  --border-color-input: #4A5568;
+
+  --shadow-color: rgba(0, 0, 0, 0.4); /* Darker shadow base for dark mode */
+  /* Shadows might need adjustment or be less prominent on dark backgrounds */
+  --shadow-xs: 0 1px 2px 0 var(--shadow-color);
+  --shadow-sm: 0 2px 3px 0 var(--shadow-color);
+  --shadow-md: 0 5px 7px -1px var(--shadow-color);
+  --shadow-lg: 0 10px 15px -3px var(--shadow-color);
+  --shadow-xl: 0 20px 25px -5px var(--shadow-color);
+
+  /* Update current theme variables for easier generic use */
+  --current-theme-background: var(--background-body);
+  --current-theme-text: var(--text-color-dark);
+  --current-theme-card-background: var(--background-card);
+  --current-theme-border: var(--border-color-light);
+  --current-theme-heading: var(--text-color-heading);
+  --current-theme-link: var(--text-color-link);
+  --current-theme-link-hover: var(--text-color-link-hover);
+
+  /* RGB versions for dark mode */
+  --background-card-rgb: 45, 55, 72; /* for #2D3748 */
+  --text-color-muted-rgb: 160, 174, 192; /* for #A0AEC0 */
+}
+
+/* Apply the current theme variables */
+body {
+  background-color: var(--current-theme-background);
+  color: var(--current-theme-text);
+}
+/* You might need to apply --current-theme-text to specific elements if they don't inherit properly */
+
+/* Example: Ensure components using these variables adapt */
+/* Header adjustments for dark mode (already using variables that will change) */
+/* .dark-mode .site-header { ... } */
+
+/* Footer adjustments for dark mode */
+.dark-mode .site-footer-main {
+  background-color: var(--background-card); /* Darker footer for dark mode, or a contrasting dark */
+  color: var(--text-color-muted);
+}
+.dark-mode .site-footer-main a {
+  color: var(--text-color-dark); /* Main text color for links */
+}
+.dark-mode .site-footer-main a:hover {
+  color: var(--primary-color);
+}
+.dark-mode .footer-brand .footer-logo,
+.dark-mode .footer-links h4,
+.dark-mode .footer-contact h4 {
+  color: var(--text-color-heading);
+}
+.dark-mode .social-links a {
+  color: var(--text-color-dark);
+}
+.dark-mode .footer-bottom {
+  border-top: 1px solid rgba(var(--text-color-muted-rgb), 0.2);
+}
+
+
+/* Other component-specific dark mode overrides if needed */
+/* For example, if a component doesn't naturally pick up the theme variables */
+.dark-mode .some-specific-component {
+  background-color: var(--background-section-alt);
+  color: var(--text-color-dark);
+}

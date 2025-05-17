@@ -1,0 +1,88 @@
+/* src/styles/contactPage.css */
+.contact-page {
+  /* .section-padding from main.css */
+}
+
+.contact-page-header {
+  margin-bottom: var(--space-xl);
+}
+/* .page-main-title and .page-subtitle already styled */
+
+.contact-content-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column by default */
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xxl);
+}
+@media (min-width: 992px) { /* Desktop layout */
+  .contact-content-grid {
+    grid-template-columns: 1.8fr 1fr; /* Form takes more space */
+    gap: var(--space-xxl);
+  }
+}
+
+.contact-form-area {
+  /* Styles for ContactForm are in contactForm.css */
+}
+
+.contact-details-area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.contact-info-box {
+  background-color: var(--background-card);
+  padding: var(--space-xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--current-theme-border);
+}
+.dark-mode .contact-info-box {
+  /* background-color: var(--dm-card-background); Handled by --background-card */
+}
+
+.contact-info-title {
+  font-size: 1.5rem;
+  color: var(--text-color-heading);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--current-theme-border);
+  padding-bottom: var(--space-sm);
+}
+.contact-info-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.contact-info-box li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  font-size: 1rem; /* Increased for readability */
+  color: var(--current-theme-text);
+}
+.contact-info-box li:last-child {
+  margin-bottom: 0;
+}
+.contact-info-box li svg {
+  color: var(--primary-color);
+  font-size: 1.3em; /* Slightly larger icon relative to text */
+  min-width: 20px; /* Ensure icon alignment */
+}
+.contact-info-box li a {
+  color: var(--current-theme-link);
+  word-break: break-word; /* Prevent long emails/links from breaking layout */
+}
+.contact-info-box li a:hover {
+  color: var(--current-theme-link-hover);
+}
+
+.whatsapp-section-on-contact-page {
+  /* Styles for WhatsAppButton are in whatsAppButton.css */
+}
+
+.location-map-section {
+  margin-top: var(--space-xl);
+  /* Styles for LocationMap are in locationMap.css */
+}

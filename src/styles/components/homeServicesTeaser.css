@@ -1,0 +1,85 @@
+/* src/styles/components/homeServicesTeaser.css */
+.home-services-teaser-section {
+  /* .section-padding adds top/bottom padding */
+  /* background-color: var(--background-light); */ /* Or alternate background */
+}
+
+/* .section-header, .section-title, .section-subtitle are defined in featuredProjectsTeaser.css or main.css, ensure they are generic enough */
+
+.services-teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xxl);
+}
+
+.service-teaser-item {
+  background-color: var(--background-card);
+  padding: var(--space-lg);
+  border-radius: var(--border-radius-md);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  border: 1px solid var(--current-theme-border);
+}
+.service-teaser-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-teaser-icon {
+  font-size: 2.8rem;
+  color: var(--primary-color);
+  margin-bottom: var(--space-md);
+  line-height: 1; /* Prevent extra space from icon line height */
+}
+
+.service-teaser-title {
+  font-size: 1.3rem;
+  color: var(--text-color-heading);
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+  font-weight: 600;
+}
+
+.service-teaser-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-color-muted);
+  margin-bottom: var(--space-md);
+  flex-grow: 1; /* Makes description take available space, pushing link to bottom */
+}
+
+.service-teaser-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: auto; /* Pushes link to bottom */
+  align-self: center; /* Center link horizontally */
+}
+.service-teaser-link:hover {
+  text-decoration: underline;
+  color: var(--primary-color-darker);
+}
+.service-teaser-link svg {
+  transition: transform 0.2s ease-in-out;
+}
+.service-teaser-link:hover svg {
+  transform: translateX(3px);
+}
+
+.view-all-services-cta {
+  margin-top: var(--space-xl);
+}
+
+/* Dark mode adjustments (mostly handled by variables) */
+.dark-mode .service-teaser-item {
+  /* background-color: var(--dm-card-background); Handled by --background-card var */
+  /* border-color: var(--dm-border-color); Handled by --current-theme-border var */
+}

@@ -1,0 +1,65 @@
+/* src/styles/servicesPage.css */
+.services-page {
+  /* Page specific styles if any */
+}
+
+.services-list-section {
+  /* .section-padding from main.css */
+}
+
+.services-page-header { /* Using generic .page-main-title and .page-subtitle */
+  margin-bottom: var(--space-xl);
+}
+.services-page-header .page-main-title,
+.services-page-header .page-subtitle {
+  color: var(--text-color-heading); /* Ensure correct color if page bg is different */
+}
+.dark-mode .services-page-header .page-main-title,
+.dark-mode .services-page-header .page-subtitle {
+  color: var(--dm-text-color-heading, #F7FAFC);
+}
+
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+}
+
+/* Highlight for hash-linked service item */
+.service-item-wrapper.highlighted-service .service-item {
+  /* Styles for ServiceItem component are in serviceItem.css */
+  outline: 3px solid var(--primary-color);
+  outline-offset: 3px;
+  box-shadow: var(--shadow-xl); /* More prominent shadow */
+  transform: scale(1.02); /* Slight scale up */
+  transition: outline 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Pricing Plans Section */
+.pricing-plans-section {
+  background-color: var(--background-section-alt);
+  /* .section-padding from main.css */
+}
+.dark-mode .pricing-plans-section {
+  background-color: var(--dm-background-section-alt, #232B3B);
+}
+
+.pricing-plans-section .section-header {
+  margin-bottom: var(--space-xl);
+}
+.pricing-plans-section .section-title { /* Generic .section-title from main.css */
+  color: var(--text-color-heading);
+}
+.pricing-plans-section .section-subtitle {
+  color: var(--text-color-muted);
+}
+
+.pricing-plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  align-items: stretch; /* Make cards in a row same height if content differs */
+}
+/* Styles for PricingPlan component are in pricingPlan.css */

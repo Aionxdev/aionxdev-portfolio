@@ -1,0 +1,90 @@
+/* src/styles/components/modal.css or add to main.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050; /* Ensure it's above other content */
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: var(--background-light);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative; /* For absolute positioning of close button if needed */
+}
+
+.modal-size-small { width: 100%; max-width: 400px; }
+.modal-size-medium { width: 100%; max-width: 600px; }
+.modal-size-large { width: 100%; max-width: 800px; }
+.modal-size-xlarge { width: 100%; max-width: 1000px; }
+
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text-color-dark);
+}
+
+.modal-close-button {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text-color-muted, #777);
+  padding: 0.25rem 0.5rem; /* Easier to click */
+}
+.modal-close-button:hover {
+  color: var(--text-color-dark);
+}
+
+.modal-body {
+  /* Styles for the main content area of the modal */
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.modal-footer {
+  padding-top: 15px;
+  margin-top: 15px;
+  border-top: 1px solid var(--border-color, #eee);
+  text-align: right;
+}
+.modal-footer .btn + .btn {
+  margin-left: 10px;
+}
+
+/* Animation (optional) */
+.modal-content {
+  animation: modal-fade-in 0.3s ease-out;
+}
+
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

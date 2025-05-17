@@ -1,0 +1,46 @@
+/* src/styles/projectsPage.css */
+.projects-page {
+  /* .section-padding provides top/bottom padding */
+}
+
+.projects-page-header {
+  margin-bottom: var(--space-xl);
+}
+
+.page-main-title { /* More generic than .section-title for H1s */
+  font-size: 2.5rem;
+  color: var(--text-color-heading);
+  margin-bottom: var(--space-sm);
+}
+@media (max-width: 768px) {
+  .page-main-title {
+    font-size: 2rem;
+  }
+}
+.page-subtitle {
+  font-size: var(--fs-lg);
+  color: var(--text-color-muted);
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+}
+
+.projects-grid-full {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Adjust minmax as needed */
+  gap: var(--space-xl);
+  margin-top: var(--space-xl); /* Space after filters */
+}
+
+/* Ensure ProjectCard styles are robust (from projectCard.css) */
+
+.no-projects-found {
+  padding: var(--space-xxl) 0;
+  color: var(--text-color-muted);
+}
+.no-projects-found p {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-lg);
+}

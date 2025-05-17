@@ -1,0 +1,72 @@
+/* src/styles/components/whyHireMe.css */
+.why-hire-me-section {
+  /* background-color: var(--background-light); */ /* Or keep page default */
+}
+
+.why-hire-me-section .section-title {
+  margin-bottom: var(--space-xl);
+  color: var(--text-color-heading);
+}
+
+.why-hire-me-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+}
+
+.why-hire-me-item {
+  background-color: var(--background-card);
+  padding: var(--space-lg);
+  border-radius: var(--border-radius-md);
+  text-align: center; /* Or left-align if preferred */
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  border: 1px solid var(--current-theme-border);
+}
+
+.why-hire-me-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.why-hire-me-icon {
+  font-size: 2.5rem; /* Icon size */
+  color: var(--primary-color);
+  margin-bottom: var(--space-md);
+  display: inline-block; /* For centering */
+}
+/* Placeholder styling if not using react-icons */
+.why-hire-me-icon .default-icon-placeholder {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--primary-color-lighter);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+
+.why-hire-me-title {
+  font-size: 1.3rem;
+  color: var(--text-color-heading);
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+  font-weight: 600;
+}
+
+.why-hire-me-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--current-theme-text);
+  margin-bottom: 0;
+}
+
+/* Dark mode adjustments (mostly handled by variables) */
+.dark-mode .why-hire-me-item {
+  /* background-color: var(--background-card); Using variable already */
+  /* border-color: var(--current-theme-border); Using variable already */
+}

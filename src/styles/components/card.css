@@ -1,0 +1,50 @@
+/* src/styles/components/card.css or add to main.css */
+.card {
+  background-color: var(--background-light); /* Or a specific card background */
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 8px;
+  overflow: hidden; /* If card contains images that might overflow */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Shadow Variants */
+.card-shadow-none { box-shadow: none; }
+.card-shadow-small { box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.card-shadow-medium { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.card-shadow-large { box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+
+/* Hover Effect */
+.card-hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Enhanced shadow on hover */
+}
+
+/* Example for card content structure (you'll add this inside the Card component as children) */
+.card-image {
+  width: 100%;
+  height: auto; /* Or a fixed height with object-fit */
+  display: block;
+}
+
+.card-content {
+  padding: 15px 20px;
+}
+
+.card-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+  color: var(--text-color-dark);
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: var(--text-color-muted, #555);
+  line-height: 1.5;
+}
+
+.card-actions {
+  padding: 10px 20px;
+  border-top: 1px solid var(--border-color, #e0e0e0);
+  margin-top: auto; /* Pushes actions to bottom if card content is flex column */
+}

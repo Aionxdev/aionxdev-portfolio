@@ -1,0 +1,246 @@
+/* src/styles/header.css */
+.site-header {
+  background-color: var(--background-card); /* Use card background for header */
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
+  border-bottom: var(--border-width) solid var(--border-color-light);
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-index-header);
+  transition: background-color var(--transition-base), box-shadow var(--transition-base), padding var(--transition-base);
+}
+
+.site-header.scrolled {
+  box-shadow: var(--shadow-md);
+  padding-top: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  background-color: rgba(var(--background-card-rgb, 255, 255, 255), 0.9); /* Slightly transparent when scrolled */
+  backdrop-filter: blur(10px); /* Glassmorphism effect */
+  -webkit-backdrop-filter: blur(10px);
+}
+/* Define --background-card-rgb in :root, e.g., 255, 255, 255 for #FFFFFF */
+:root {
+  /* ... */
+  --background-card-rgb: 255, 255, 255; /* for #FFFFFF */
+}
+/* Update this in theme.css for dark mode */
+.dark-mode {
+  --background-card-rgb: 30, 30, 30; /* for #1E1E1E (example dark card bg) */
+}
+
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-family: var(--font-secondary); /* Or your preferred logo font */
+  color: var(--text-color-heading);
+  text-decoration: none;
+}
+.logo:hover {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center; /* Align nav items with logo/actions */
+  justify-content: center; /* Center items vertically */
+  margin-left: var(--space-lg); /* Space between logo and nav links */
+  margin-right: var(--space-lg); /* Space between nav links and actions */
+}
+
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center; /* Vertically align nav items with logo/actions */
+}
+
+.main-nav li {
+  margin-left: var(--space-lg);
+}
+.main-nav li:first-child {
+  margin-left: 0; /* No margin for the first item on desktop */
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: var(--fs-sm);
+  padding: var(--space-sm) 0;
+  position: relative;
+  transition: color var(--transition-short);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.main-nav a:hover,
+.main-nav a.active { /* .active class is added by NavLink */
+  color: var(--primary-color);
+}
+
+/* Underline for active link */
+.main-nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0; /* Adjust if padding changes */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width var(--transition-short);
+}
+.main-nav a:not(.active):hover::after { /* Subtle underline on hover for non-active */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width var(--transition-short);
+  width: 50%; /* Or full width on hover */
+}
+
+
+.header-actions {
+  display: flex; /* For DarkModeToggle etc. in desktop nav */
+  align-items: center; /* Align with nav items */
+  justify-content: center; /* Center items vertically */
+  
+  margin-right: var(--space-lg); /* Space between actions and nav links */
+  gap: var(--space-md);
+  margin-left: var(--space-lg); /* Space between nav links and actions */
+  /* On a straight line with the nav items */
+}
+
+.mobile-menu-toggle {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-sm);
+  z-index: calc(var(--z-index-header) + 1); /* Ensure toggle is above nav on mobile */
+  color: var(--text-color);
+}
+
+.hamburger-icon {
+  width: 24px;
+  height: 18px; /* Total height of the hamburger */
+  position: relative;
+  display: inline-block;
+}
+.hamburger-icon span {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px; /* Thickness of lines */
+  background-color: currentColor; /* Inherits color from button */
+  border-radius: 1px;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+.hamburger-icon span:nth-child(1) { top: 0; }
+.hamburger-icon span:nth-child(2) { top: 8px; /* Middle line */ }
+.hamburger-icon span:nth-child(3) { top: 16px; /* Bottom line */ }
+
+/* Hamburger animation when mobile menu is open */
+.site-header.mobile-menu-active .hamburger-icon span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 8px; /* Move to center */
+}
+.site-header.mobile-menu-active .hamburger-icon span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.site-header.mobile-menu-active .hamburger-icon span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 8px; /* Move to center */
+}
+
+.header-meta-actions { /* Container for mobile toggle and dark mode on mobile */
+  display: none; /* Hidden on desktop, shown on mobile */
+}
+
+/* Mobile Styles */
+@media (max-width: 900px) { /* Adjust breakpoint as needed */
+  .main-nav {
+    display: none; /* Hide desktop nav by default */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center items vertically */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    background-color: var(--background-card); /* Same as header or slightly darker/lighter */
+    padding: var(--space-xxl) var(--container-padding); /* Ample padding */
+    transform: translateX(100%);
+    transition: transform var(--transition-base);
+    overflow-y: auto; /* If content exceeds viewport */
+  }
+
+  .main-nav.open {
+    display: flex; /* Show when open */
+    transform: translateX(0%);
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .main-nav li {
+    margin: var(--space-md) 0; /* Vertical spacing for mobile links */
+    width: 100%;
+    text-align: center;
+  }
+  .main-nav li:first-child {
+    margin-left: 0; /* Reset desktop margin */
+  }
+
+  .main-nav a {
+    display: block;
+    padding: var(--space-md) 0;
+    font-size: 1.25rem; /* Larger font for mobile nav */
+    width: 100%;
+  }
+  .main-nav a.active::after,
+  .main-nav a:not(.active):hover::after {
+    display: none; /* No underlines in mobile dropdown, or style differently */
+  }
+
+  .header-actions { /* DarkModeToggle in mobile menu */
+    margin-top: var(--space-xl);
+    margin-left: 0; /* Reset desktop margin */
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex; /* Show hamburger */
+  }
+
+  .header-meta-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  .mobile-dark-mode-toggle { /* Show DarkModeToggle next to hamburger if desired */
+    /* Styles for DarkModeToggle when positioned here */
+  }
+  .main-nav .header-actions { /* DarkModeToggle inside mobile menu */
+    /* Styles if it's inside the slide-out menu */
+  }
+}

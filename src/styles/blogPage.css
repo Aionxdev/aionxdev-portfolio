@@ -1,0 +1,65 @@
+/* src/styles/blogPage.css */
+.blog-page-header { /* Styles for the header within BlogLayout's main content */
+  margin-bottom: var(--space-xl);
+  text-align: center; /* Or left, depending on design */
+}
+.blog-page-header .page-main-title,
+.blog-page-header .page-subtitle {
+  color: var(--text-color-heading); /* Ensure correct color */
+}
+.dark-mode .blog-page-header .page-main-title,
+.dark-mode .blog-page-header .page-subtitle {
+  color: var(--dm-text-color-heading, #F7FAFC);
+}
+
+.blog-posts-grid {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); */
+  /* If using sidebar, main content area might be better as single column or 2-col max */
+  grid-template-columns: 1fr; /* Default for easier reading with sidebar */
+  gap: var(--space-xl);
+}
+@media (min-width: 768px) {
+  /* If sidebar is present, this grid is in the main content area.
+     You might want 2 columns here if the main content area is wide enough. */
+  .blog-layout-grid.with-sidebar .blog-posts-grid {
+     /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Example for 2-col in main area */
+  }
+}
+
+/* Styles for BlogPostCard are in blogPostCard.css */
+
+.no-posts-found {
+  padding: var(--space-xxl) 0;
+  color: var(--text-color-muted);
+  text-align: center;
+}
+.no-posts-found p {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-lg);
+}
+
+/* Placeholder Pagination Styles */
+.pagination-placeholder .pagination-button {
+  background-color: var(--background-card);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-short), color var(--transition-short);
+}
+.pagination-placeholder .pagination-button:hover {
+  background-color: var(--primary-color-lighter);
+  color: var(--text-color-dark);
+}
+.pagination-placeholder .pagination-button.active {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  font-weight: bold;
+}
+.dark-mode .pagination-placeholder .pagination-button {
+  background-color: var(--dm-card-background, #2D3748);
+  /* Adjust colors for dark mode */
+}
+.dark-mode .pagination-placeholder .pagination-button.active {
+  /* Adjust active colors for dark mode */
+}
